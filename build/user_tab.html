@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/@atlassian/aui/dist/aui/css/aui.min.css" media="all">
+    <link rel="stylesheet" href="../node_modules/@atlassian/aui/dist/aui/css/aui-experimental.min.css" media="all">
+    <script src="../node_modules/@atlassian/aui/dist/aui/js/aui.min.js"></script>
+    <script src="../node_modules/@atlassian/aui/dist/aui/js/aui-experimental.min.js"></script>
+    <script src="../node_modules/@atlassian/aui/dist/aui/js/aui-soy.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/admin_panel.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <div class="header-logo">
+            <h1>Admin panel</h1>
+        </div>
+        <div class="header-user-info">
+            <div class="user-name" id="user_name">Admin</div>
+            <div class="user-modal" id="user_modal">
+                <div class="user-modal-wrapper">
+                    <a href="#" class="user-modal-link">Edit</a>
+                    <a href="#" class="user-modal-link">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="main-tabs">
+            <nav class="nav">
+                <a class="nav-link" href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard</a>
+                <a class="nav-link" href="#"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</a>
+                <a class="nav-link" href="#"><i class="fa fa-tags" aria-hidden="true"></i>Tags</a>
+                <a class="nav-link active" href="#"><i class="fa fa-users" aria-hidden="true"></i>User List</a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="content-addimage">
+                <div class="image-status" style="color:green;">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    User Added successful
+                </div>
+                <button type="button" data-toggle="modal" data-target="#modal-open-add-user" class="btn btn-dark"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add new user</button>
+            </div>
+            <div class="content-search">
+                <form action="">
+                    <div class="form-group">
+                        <label for="search_input">Search:</label>
+                        <input type="text" class="form-control" id="search_input" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+            <div class="content-imagedata">
+                    <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col" class="table-col">Id</th>
+                                <th scope="col" class="table-col">User_name</th>
+                                <th scope="col" class="table-col">Role</th>
+                                <th scope="col" class="table-col">Last_visited</th>
+                                <th scope="col" class="table-col">Created_at</th>
+                                <th scope="col" class="table-col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>username1</td>
+                                <td>Admin</td>
+                                <td>30.02.2016</td>
+                                <td>30.02.2016</td>
+                                <td class="col-action"><div class="support-btns"><button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</button><button type="button" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button></div></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>username2</td>
+                                <td>User</td>
+                                <td>31.02.2016</td>
+                                <td>31.02.2016</td>
+                                <td class="col-action"><div class="support-btns"><button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</button><button type="button" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button></div></td>
+                              </tr>
+                            </tbody>
+                          </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-open-img" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+                <img src="assets/images/img.png" alt="cat">
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-open-add-user" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create New user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="username_input">Username</label>
+                            <input type="text" name="username" class="form-control" id="username_input" placeholder="Enter Username" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password_input">Password</label>
+                            <input type="text" name="password" class="form-control" id="password_input" placeholder="Enter Password" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="re_password_input">Re-password</label>
+                            <input type="text" name="re-password" class="form-control" id="re_password_input" placeholder="Enter Re-password" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="role_input">Role</label>
+                            <select class="form-control" id="role_input">
+                                    <option>User</option>
+                                    <option>Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+    <script>
+        $('body').click(function(e){
+            if($('.header-user-info').hasClass('modal-open-user')){
+                $('.header-user-info').removeClass('modal-open-user');
+            }
+        });
+        $('#user_name').click(function(e){
+            e.preventDefault();
+            if(!$('.header-user-info').hasClass('modal-open-user')){
+                $('.header-user-info').addClass('modal-open-user');
+            }else{
+                $('.header-user-info').removeClass('modal-open-user');
+            }
+            e.stopPropagation();
+        });
+    </script>
+</div>
+
+</body>
+</html>
